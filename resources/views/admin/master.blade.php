@@ -42,6 +42,7 @@
 <script src="{{ asset('plugin/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('plugin/dist/js/adminlte.js')}}"></script>
+@stack('js')
 
 </body>
 </html>
