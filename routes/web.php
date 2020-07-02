@@ -32,14 +32,14 @@ Route::group(['middleware' => ['auth']], function () {
 });
 
 
-Route::get('/', 'PagesController@home')->name('home');
-Route::get('/product', 'PagesController@product')->name('product');
-Route::get('/client', 'PagesController@client')->name('client');
-Route::get('/contact', 'PagesController@contact')->name('contact');
+Route::get('/', 'PagesController@home')->name('home-user');
+Route::get('/product', 'PagesController@product')->name('product-user');
+Route::get('/client', 'PagesController@client')->name('client-user');
+Route::get('/contact', 'PagesController@contact')->name('contact-user');
 
 
 
 
 Auth::routes();
 
-// Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');

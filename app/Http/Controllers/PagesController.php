@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use App\Client;
 
 class PagesController extends Controller
 {
@@ -16,7 +18,8 @@ class PagesController extends Controller
     }
 
     public function client(){
-        return view('user.content.client');
+        $clients = Client::all();
+        return view('user.content.client', compact('clients'));
     }
 
     public function contact(){
