@@ -40,13 +40,13 @@ class ProductController extends Controller
         $validatedData = $request->validate([
             'nama'        => 'required',
             'description' => 'required',
-            'image'       => 'required|max:2024'
+            'image'       => 'required|max:2048'
         ]);
 
         $data = $request->all();
         $data['image'] = $request->file('image')->store('assets/product','public');
         
-        Product::create($validatedData);
+        Product::create($data);
         return redirect()->route('product.index')->with('pesan',"Data {$validatedData['nama']} berhasil ditambahkan");
         
     }

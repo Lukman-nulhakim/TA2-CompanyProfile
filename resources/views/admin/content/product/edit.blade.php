@@ -27,7 +27,7 @@
                         <div class="form-group">
                             <label for="image">Image</label>
                             <img src="{{ Storage::url($product->image) }}" alt="" style="width: 150px;">
-                            <input type="file" name="image" id="image" class="form-control" required>
+                            <input type="file" name="image" id="image" class="form-control">
                         </div>
                         <button type="submit" class="btn btn-warning">Edit</button>
                     </form>
