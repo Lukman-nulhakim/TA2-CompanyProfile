@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Route::get('/', function () {
-//     return view('admin.master');
+//     return view('welcome');
 // });
-//
+
 
 //-----------------Route Admin-----------------------
 Route::group(['middleware' => ['auth']], function () {
@@ -27,7 +27,9 @@ Route::group(['middleware' => ['auth']], function () {
         Route::resource('home', 'HomeController');
         Route::resource('product', 'ProductController');
         Route::resource('client', 'ClientController');
-        Route::resource('contact', 'ContactController');
+
+        Route::get('contact', 'ContactController@index')->name('contact.index');
+        Route::delete('contact/{contact}', 'ContactController@destroy')->name('contact.destroy');
     });
 });
 
@@ -35,11 +37,14 @@ Route::group(['middleware' => ['auth']], function () {
 Route::get('/', 'PagesController@home')->name('home');
 Route::get('/product', 'PagesController@product')->name('product');
 Route::get('/client', 'PagesController@client')->name('client');
-Route::get('/contact', 'PagesController@contact')->name('contact');
+Route::get('/contact', 'PagesController@contact')->name('contact-user');
+
+Route::get('contact/create', 'ContactController@create')->name('contact.create');
+Route::post('contact', 'ContactController@store')->name('contact.store');
 
 
 
 
 Auth::routes();
 
-// Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');

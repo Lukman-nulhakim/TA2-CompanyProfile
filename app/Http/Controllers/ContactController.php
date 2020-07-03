@@ -14,7 +14,8 @@ class ContactController extends Controller
      */
     public function index()
     {
-        return view('admin.content.contact.index');
+        $contacts = Contact::all();
+        return view('admin.content.contact.index', compact('contacts'));
     }
 
     /**
@@ -25,6 +26,7 @@ class ContactController extends Controller
     public function create()
     {
         //
+        return view('user.content.contact');
     }
 
     /**
@@ -36,6 +38,20 @@ class ContactController extends Controller
     public function store(Request $request)
     {
         //
+        $validatedData = $request->validate([
+            'pesan'=>'',
+            'nama'=>'required',
+            'email'=>'required',
+            'subjek'=>''
+        ]);
+        $contact = new Contact();
+        $contact->pesan = $validatedData['pesan'];
+        $contact->nama = $validatedData['nama'];
+        $contact->email = $validatedData['email'];
+        $contact->subjek = $validatedData['subjek'];
+        $contact->save();
+        return redirect()->route('contact.create');
+        // dump($validatedData);
     }
 
     /**
@@ -44,9 +60,9 @@ class ContactController extends Controller
      * @param  \App\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function show(Contact $contact)
-    {
-        //
+    public function show($contact){
+        $result = Contact::find($contact);
+        return view('admin.content.contact.show', compact('result'));
     }
 
     /**
@@ -55,9 +71,8 @@ class ContactController extends Controller
      * @param  \App\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function edit(Contact $contact)
-    {
-        //
+    public function edit(Contact $contact){
+        return view('admin.content.contact.edit', compact('contact'));
     }
 
     /**
@@ -67,10 +82,20 @@ class ContactController extends Controller
      * @param  \App\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Contact $contact)
-    {
-        //
-    }
+    // public function update(Contact $contact, Request $request){
+    //     $validatedData = $request->validate([
+    //         'pesan'=>'',
+    //         'nama'=>'required',
+    //         'email'=>'required',
+    //         'subjek'=>''
+    //     ]);
+    //     $result->pesan = $validatedData['pesan'];
+    //     $result->nama = $validatedData['nama'];
+    //     $result->email = $validatedData['email'];
+    //     $result->subjek = $validatedData['subjek'];
+    //     $result->save();
+    //     return redirect()->route('contact.index');
+    // }
 
     /**
      * Remove the specified resource from storage.
@@ -81,5 +106,10 @@ class ContactController extends Controller
     public function destroy(Contact $contact)
     {
         //
+        $contact->delete();
+        return redirect()->route('contact.index')->with([
+            'status' => 'delete',
+            'message' => $contact->nama
+        ]);
     }
 }

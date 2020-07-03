@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Contact;
 
 class PagesController extends Controller
 {
@@ -20,6 +21,7 @@ class PagesController extends Controller
     }
 
     public function contact(){
+        $contact = Contact::all();
         return view('user.content.contact');
     }
 }
