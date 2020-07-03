@@ -20,16 +20,17 @@ use Illuminate\Support\Facades\Route;
 
 //-----------------Route Admin-----------------------
 Route::group(['middleware' => ['auth']], function () {
-});
-        Route::group(['prefix' => 'admin'], function () {
-            Route::get('/', function(){
-                return redirect()->route('home.index');
-            });
-            Route::resource('home', 'HomeController');
-            Route::resource('product', 'ProductController');
-            Route::resource('client', 'ClientController');
-            Route::resource('contact', 'ContactController');
+    Route::group(['prefix' => 'admin'], function () {
+        Route::get('/', function(){
+            return redirect()->route('home.index');
         });
+        Route::resource('home', 'HomeController');
+        Route::resource('product', 'ProductController');
+        Route::resource('client', 'ClientController');
+        Route::resource('contact', 'ContactController');
+    });
+});
+        
 
 
 Route::get('/', 'PagesController@home')->name('home-user');

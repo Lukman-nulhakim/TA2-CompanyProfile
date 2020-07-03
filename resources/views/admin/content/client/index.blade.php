@@ -90,7 +90,7 @@
                                 {{-- Card Body --}}
                                 <div class="card-body">
                                     <h5 class="card-title font-weight-bold">{{ $client->nama }}</h5>
-                                    <p class="card-text">{{ $client->alamat }}</p>
+                                    <p class="card-text" style="max-height: 45px; overflow: hidden">{{ $client->alamat }}</p>
                                     {{-- button --}}
                                     <div class="row d-flex justify-content-end">
                                         <div class="col-2 mr-2">

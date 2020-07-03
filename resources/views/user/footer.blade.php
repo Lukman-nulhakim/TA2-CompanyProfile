@@ -8,12 +8,7 @@
                             <div class="single-footer-caption mb-30">
                                 <!-- logo -->
                                 <div class="footer-logo">
-                                    <a href="index.html"><img src="assets/img/logo/logo2_footer.png" alt=""></a>
-                                </div>
-                                <div class="footer-tittle">
-                                    <div class="footer-pera">
-                                        <p class="info1">Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore.</p>
-                                    </div>
+                                    <a href="/"><img src="{{ Storage::url($home[0]['logo']) }}" alt=""></a>
                                 </div>
                             </div>
                         </div>
@@ -67,7 +62,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Copy-Right -->
+                    {{-- <!-- Copy-Right -->
                     <div class="row align-items-center">
                         <div class="col-xl-12 ">
                             <div class="footer-copy-right">
@@ -76,7 +71,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
     </div>
