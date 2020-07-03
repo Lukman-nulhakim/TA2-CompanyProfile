@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Product;
 
 class PagesController extends Controller
 {
@@ -12,6 +13,7 @@ class PagesController extends Controller
     }
 
     public function product(){
+        $product = Product::all();
         return view('user.content.product');
     }
 

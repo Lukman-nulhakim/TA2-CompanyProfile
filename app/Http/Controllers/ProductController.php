@@ -85,11 +85,19 @@ class ProductController extends Controller
         $validatedData = $request->validate([
             'nama'        => 'required',
             'description' => 'required',
-            'image'       => 'required|max:2024'
+            'image'       => 'required|max:2048'
         ]);
-        $product->update($validatedData);
-        $product->save();
-        return redirect()->route('product.index',['product' => $product->id])->with('pesan',"Update data {$validatedData['nama']} Berhasil");
+        
+        $productId = $product->find($product->id);
+        $data = $request->all();
+        if ($request->image) {
+            Storage::delete('public/'.$productId->image);
+            $data['image'] = $request->file('image')->store('assets/product','public');
+        }
+
+        $productId->update($data);
+        $productId->save();
+        return redirect()->route('product.index',['product' => $productId->id])->with('pesan',"Update data {$validatedData['nama']} Berhasil");
     }
 
     /**
@@ -101,6 +109,7 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
+        Storage::delete('public/'.$product->image);
         return redirect()->route('product.index')->with('pesan',"Hapus data $product->nama Berhasil ");
     }
 }

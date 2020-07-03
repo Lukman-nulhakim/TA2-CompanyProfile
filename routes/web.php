@@ -33,7 +33,7 @@ Route::group(['middleware' => ['auth']], function () {
 
 
 Route::get('/', 'PagesController@home')->name('home');
-Route::get('/product', 'PagesController@product')->name('product');
+Route::get('/product', 'PagesController@product')->name('product-user');
 Route::get('/client', 'PagesController@client')->name('client');
 Route::get('/contact', 'PagesController@contact')->name('contact');
 
