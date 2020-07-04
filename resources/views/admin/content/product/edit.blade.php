@@ -1,5 +1,5 @@
 @extends('admin.master')
-@section('title','edit')
+@section('title','Edit')
 @section('product','active')
 @section('content')
     
@@ -29,6 +29,23 @@
                             <img src="{{ Storage::url($product->image) }}" alt="" style="width: 150px;">
                             <input type="file" name="image" id="image" class="form-control">
                         </div>
+                        {{-- Jenis_product --}}
+                    <div class="form-group">
+                        <label for="detail_id">Jenis Product</label>
+                        <select class="form-control" name="detail_id" id="detail_id">
+                            @foreach ($detailProduct as $item)
+                                <option value="{{ $item->id }}" {{ (old('detail_id') ??$product->detail_product->jenis_product) == $item->jenis_product ? 'selected' : '' }}>
+                                    {{ $item->jenis_product }}
+                                </option>
+                            @endforeach
+                        </select>
+                        @error('detail_id')
+                            {{ $message }}
+                        @enderror
+                    </div>
+
+                    {{-- End Jenis_product --}}
+
                         <button type="submit" class="btn btn-warning">Edit</button>
                     </form>
                 </div>

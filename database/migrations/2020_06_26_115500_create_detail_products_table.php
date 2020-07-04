@@ -15,6 +15,7 @@ class CreateDetailProductsTable extends Migration
     {
         Schema::create('detail_products', function (Blueprint $table) {
             $table->id();
+            $table->string('jenis_product');
             $table->timestamps();
         });
     }

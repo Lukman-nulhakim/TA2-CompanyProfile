@@ -37,6 +37,12 @@
             </a>
           </li>
           <li class="nav-item">
+            <a href="{{ route('detailProduct.index') }}" class="nav-link @yield('detail')">
+              <i class="nav-icon fas fa-briefcase"></i>
+              <p>Jenis Product</p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="{{ route('client.index') }}" class="nav-link @yield('client')">
               <i class="nav-icon fas fa-graduation-cap"></i>
               <p>Client</p>

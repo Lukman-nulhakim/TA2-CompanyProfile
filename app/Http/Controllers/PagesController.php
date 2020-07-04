@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Product;
+use App\DetailProduct;
 
 class PagesController extends Controller
 {
@@ -14,8 +16,11 @@ class PagesController extends Controller
 
     public function product(){
         $product = Product::all();
-        return view('user.content.product');
+        $detailProduct = DetailProduct::all();
+        return view('user.content.product', compact('product','detailProduct'));
     }
+    
+    
 
     public function client(){
         return view('user.content.client');

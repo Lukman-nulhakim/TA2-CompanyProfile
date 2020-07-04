@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\DetailProduct;
 
 class ProductController extends Controller
 {
@@ -26,7 +27,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('admin.content.product.create');
+        $detailProduct = DetailProduct::all();
+        return view('admin.content.product.create',compact('detailProduct'));
     }
 
     /**
@@ -40,7 +42,8 @@ class ProductController extends Controller
         $validatedData = $request->validate([
             'nama'        => 'required',
             'description' => 'required',
-            'image'       => 'required|max:2048'
+            'image'       => 'max:2048',
+            'detail_id'   => 'required'
         ]);
 
         $data = $request->all();
@@ -70,7 +73,8 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('admin.content.product.edit',compact('product'));
+        $detailProduct = DetailProduct::all();
+        return view('admin.content.product.edit',compact('product','detailProduct'));
     }
 
     /**
@@ -85,7 +89,8 @@ class ProductController extends Controller
         $validatedData = $request->validate([
             'nama'        => 'required',
             'description' => 'required',
-            'image'       => 'required|max:2048'
+            'image'       => 'max:2048',
+            'detail_id'   => 'required'
         ]);
         
         $productId = $product->find($product->id);

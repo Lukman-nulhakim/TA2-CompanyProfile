@@ -127,11 +127,11 @@
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="hero-cap pt-100">
-                                <h2>Our projects</h2>
+                                <h2>Our products</h2>
                                 <nav aria-label="breadcrumb ">
                                     <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                                    <li class="breadcrumb-item"><a href="#">Project</a></li> 
+                                    <li class="breadcrumb-item"><a href="#">Product</a></li> 
                                     </ol>
                                 </nav>
                             </div>
@@ -150,7 +150,7 @@
                             <!-- Section Tittle -->
                             <div class="section-tittle section-tittle3">
                                 <div class="front-text">
-                                    <h2 class="">Our Projects</h2>
+                                    <h2 class="">Our Products</h2>
                                 </div>
                                 <span class="back-text">Gellary</span>
                             </div>
@@ -161,7 +161,7 @@
                                 <nav> 
                                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                         <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="false"> Show  all </a>
-                                        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false"> Intorior</a>
+                                        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false"> Interior</a>
                                         <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Recent</a>
                                         <a class="nav-item nav-link" id="nav-last-tab" data-toggle="tab" href="#nav-last" role="tab" aria-controls="nav-contact" aria-selected="false">Big building</a>
                                         <a class="nav-item nav-link" id="nav-technology" data-toggle="tab" href="#nav-techno" role="tab" aria-controls="nav-contact" aria-selected="false">Park</a>
@@ -180,83 +180,31 @@
                             <div class="tab-pane fade active show" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">           
                                 <div class="project-caption">
                                     <div class="row">
+                                        @forelse ($product as $item)
                                         <div class="col-lg-4 col-md-6">
                                             <div class="single-project mb-30">
                                                 <div class="project-img">
-                                                    <img src="assets/img/gallery/project1.png" alt="">
+                                                    <img src="{{ Storage::url($item->image) }}" alt="">
                                                 </div>
                                                 <div class="project-cap">
-                                                    <a href="project_details.html" class="plus-btn"><i class="ti-plus"></i></a>
-                                                    <h4><a href="project_details.html">Floride Chemicals</a></h4>
+                                                    <a href="#" class="plus-btn"><i class="ti-plus"></i></a>
+                                                    <h4>{{ $item->nama }}</h4>
+                                                    <h4>{{ $item->description }}</h4>
+                                                    <h4>{{ $item->detail_product->detail_id }}</h4>
                                                     <h4><a href="project_details.html">Factory</a></h4>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-4 col-md-6">
-                                            <div class="single-project mb-30">
-                                                <div class="project-img">
-                                                    <img src="assets/img/gallery/project2.png" alt="">
-                                                </div>
-                                                <div class="project-cap">
-                                                   <a href="project_details.html" class="plus-btn"><i class="ti-plus"></i></a>
-                                                    <h4><a href="project_details.html">Floride Chemicals</a></h4>
-                                                    <h4><a href="project_details.html">Factory</a></h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-6">
-                                            <div class="single-project mb-30">
-                                                <div class="project-img">
-                                                    <img src="assets/img/gallery/project3.png" alt="">
-                                                </div>
-                                                <div class="project-cap">
-                                                   <a href="project_details.html" class="plus-btn"><i class="ti-plus"></i></a>
-                                                    <h4><a href="project_details.html">Floride Chemicals</a></h4>
-                                                    <h4><a href="project_details.html">Factory</a></h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-6">
-                                            <div class="single-project mb-30">
-                                                <div class="project-img">
-                                                    <img src="assets/img/gallery/project4.png" alt="">
-                                                </div>
-                                                <div class="project-cap">
-                                                   <a href="project_details.html" class="plus-btn"><i class="ti-plus"></i></a>
-                                                    <h4><a href="project_details.html">Floride Chemicals</a></h4>
-                                                    <h4><a href="project_details.html">Factory</a></h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-6">
-                                            <div class="single-project mb-30">
-                                                <div class="project-img">
-                                                    <img src="assets/img/gallery/project5.png" alt="">
-                                                </div>
-                                                <div class="project-cap">
-                                                   <a href="project_details.html" class="plus-btn"><i class="ti-plus"></i></a>
-                                                    <h4><a href="project_details.html">Floride Chemicals</a></h4>
-                                                    <h4><a href="project_details.html">Factory</a></h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-6">
-                                            <div class="single-project mb-30">
-                                                <div class="project-img">
-                                                    <img src="assets/img/gallery/project6.png" alt="">
-                                                </div>
-                                                <div class="project-cap">
-                                                   <a href="project_details.html" class="plus-btn"><i class="ti-plus"></i></a>
-                                                    <h4><a href="project_details.html">Floride Chemicals</a></h4>
-                                                    <h4><a href="project_details.html">Factory</a></h4>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        
+                                        @empty
+                                            <h1>Belum ada prouduct</h1>
+                                        @endforelse
+                                        
                                     </div>
                                 </div>
                             </div>
                             <!-- Card TWO -->
-                            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                            {{-- <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                                 <div class="project-caption">
                                     <div class="row">
                                         <div class="col-lg-4 col-md-6">
@@ -571,7 +519,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     <!-- End Nav Card -->
                     </div>
                 </div>

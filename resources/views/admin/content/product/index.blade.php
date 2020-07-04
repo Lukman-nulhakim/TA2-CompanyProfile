@@ -1,5 +1,5 @@
 @extends('admin.master')
-@section('title','product')
+@section('title','Product')
 @section('product','active')
 @section('content')
     
@@ -26,6 +26,7 @@
                         <th scope="col">Name of Product</th>
                         <th scope="col">Description</th>
                         <th scope="col">Image</th>
+                        <th scope="col">Jenis Product</th>
                         <th scope="col">Action</th>
                       </tr>
                     </thead>
@@ -38,6 +39,7 @@
                               <td>
                                   <img src="{{ Storage::url($tampil->image) }}" alt="" style="width:150px;">
                               </td>
+                              <td>{{ $tampil->detail_product->jenis_product }}</td>
                               <td>
                                   <div class="d-flex">
                                       <a href="{{ route('product.edit',['product' =>$tampil->id]) }}" class="btn btn-warning">Edit</a>

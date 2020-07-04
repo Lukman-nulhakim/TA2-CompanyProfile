@@ -14,7 +14,8 @@ class DetailProductController extends Controller
      */
     public function index()
     {
-        //
+        $detailProduct = DetailProduct::all();
+        return view('admin.content.detail.index',compact('detailProduct'));
     }
 
     /**
@@ -24,7 +25,7 @@ class DetailProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.content.detail.create');
     }
 
     /**
@@ -35,7 +36,11 @@ class DetailProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData =$request->validate([
+            'jenis_product' => 'required|unique:detail_products'
+        ]);
+        DetailProduct::create($validatedData);
+        return redirect()->route('detailProduct.index')->with('pesan',"$request->jenis_product berhasil ditambahkan");
     }
 
     /**
@@ -57,7 +62,7 @@ class DetailProductController extends Controller
      */
     public function edit(DetailProduct $detailProduct)
     {
-        //
+        return view('admin.content.detail.edit', compact('detailProduct'));
     }
 
     /**
@@ -69,7 +74,11 @@ class DetailProductController extends Controller
      */
     public function update(Request $request, DetailProduct $detailProduct)
     {
-        //
+        $validatedData =$request->validate([
+            'jenis_product' => 'required|unique:detail_products,jenis_product'
+        ]);
+        $detailProduct->update($validatedData);
+        return redirect()->route('detailProduct.index')->with('pesan',"Jenis $detailProduct->jenis_product berhasil diupdate ");
     }
 
     /**
@@ -80,6 +89,7 @@ class DetailProductController extends Controller
      */
     public function destroy(DetailProduct $detailProduct)
     {
-        //
+        $detailProduct->delete();
+        return redirect()->route('detailProduct.index')->with('pesan',"Jenis $detailProduct->jenis_product berhasil diupdate ");
     }
 }
