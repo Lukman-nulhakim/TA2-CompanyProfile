@@ -6,7 +6,7 @@
 <main>
     <!-- slider Area Start-->
     <div class="slider-area ">
-        <div class="single-slider hero-overly slider-height2 d-flex align-items-center" data-background="assets/img/hero/about.jpg">
+        <div class="single-slider hero-overly slider-height2 d-flex align-items-center" data-background="{{ asset('assets/img/hero/about.jpg') }}">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-12">
@@ -14,8 +14,8 @@
                             <h2>Clients</h2>
                             <nav aria-label="breadcrumb ">
                                 <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item"><a href="#">Clients</a></li> 
+                                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                                <li class="breadcrumb-item"><a href="{{ url('client') }}">Clients</a></li> 
                                 </ol>
                             </nav>
                         </div>
@@ -44,12 +44,12 @@
                     <div class="col-xl-4 col-lg-4 col-md-6">
                         <div class="single-service-cap mb-30">
                             <div class="service-img">
-                                <img src="{{ Storage::url($client->foto) }}" alt="" style="height: 300px">
+                                <img src="{{ Storage::url($client->foto) }}" alt="" style="max-height: 230px">
                             </div>
                             <div class="service-cap">
                                 <h4><a href="#">{{ $client->nama }}</a></h4>
                                 <h5>{{ $client->alamat }}</h5>
-                                <a href="services_details.html" class="more-btn">Read More <i class="ti-plus"></i></a>
+                                {{-- <a href="services_details.html" class="more-btn">Read More <i class="ti-plus"></i></a> --}}
                             </div>
                             <div class="service-icon">
                                 <img src="assets/img/icon/services_icon1.png" alt="">

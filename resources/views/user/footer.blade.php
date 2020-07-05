@@ -8,7 +8,9 @@
                             <div class="single-footer-caption mb-30">
                                 <!-- logo -->
                                 <div class="footer-logo">
-                                    <a href="/"><img src="{{ Storage::url($home[0]['logo']) }}" alt=""></a>
+                                    <a href="/"><img src="@foreach ($home as $jumbo)
+                                        {{ Storage::url($jumbo->logo) }}
+                                        @endforeach" alt=""></a>
                                 </div>
                             </div>
                         </div>
@@ -17,10 +19,10 @@
                                 <div class="footer-tittle">
                                     <h4>Quick Links</h4>
                                     <ul>
-                                        <li><a href="#">About</a></li>
-                                        <li><a href="#">Services</a></li>
-                                        <li><a href="#">Projects</a></li>
-                                        <li><a href="#">Contact Us</a></li>
+                                        <li><a href="{{ route('home-user') }}">Home</a></li>
+                                        <li><a href="{{ route('product-user') }}">Product</a></li>
+                                        <li><a href="{{ route('client-user') }}">Client</a></li>
+                                        <li><a href="{{ route('contact-user') }}">Contact Us</a></li>
                                     </ul>
                                 </div>
                             </div>
