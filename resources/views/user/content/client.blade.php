@@ -44,10 +44,10 @@
                     <div class="col-xl-4 col-lg-4 col-md-6">
                         <div class="single-service-cap mb-30">
                             <div class="service-img">
-                                <img src="{{ Storage::url($client->foto) }}" alt="">
+                                <img src="{{ Storage::url($client->foto) }}" alt="" style="height: 300px">
                             </div>
                             <div class="service-cap">
-                                <h4><a href="services_details.html">{{ $client->nama }}</a></h4>
+                                <h4><a href="#">{{ $client->nama }}</a></h4>
                                 <h5>{{ $client->alamat }}</h5>
                                 <a href="services_details.html" class="more-btn">Read More <i class="ti-plus"></i></a>
                             </div>

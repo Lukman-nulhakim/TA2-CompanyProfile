@@ -5,7 +5,7 @@
         <div class="preloader-inner position-relative">
             <div class="preloader-circle"></div>
             <div class="preloader-img pere-text">
-                <img src="assets/img/logo/loder-logo.png" alt="">
+                <img src="{{ $home[0]['logo'] }}" alt="">
             </div>
         </div>
     </div>
@@ -15,7 +15,7 @@
     <!-- Header Start -->
    <div class="header-area header-transparent">
         <div class="main-header ">
-            <div class="header-top d-none d-lg-block">
+            {{-- <div class="header-top d-none d-lg-block">
                <div class="container-fluid">
                    <div class="col-xl-12">
                         <div class="row d-flex justify-content-between align-items-center">
@@ -37,7 +37,7 @@
                         </div>
                    </div>
                </div>
-            </div>
+            </div> --}}
            <div class="header-bottom  header-sticky">
                 <div class="container-fluid">
                     <div class="row align-items-center">
@@ -77,11 +77,11 @@
                                 </nav>
                             </div>
                         </div>             
-                        <div class="col-xl-2 col-lg-2 col-md-3">
+                        {{-- <div class="col-xl-2 col-lg-2 col-md-3">
                             <div class="header-right-btn f-right d-none d-lg-block">
                                 <a href="#" class="btn">Contact Now</a>
                             </div>
-                        </div>
+                        </div> --}}
                         <!-- Mobile Menu -->
                         <div class="col-12">
                             <div class="mobile_menu d-block d-lg-none"></div>
