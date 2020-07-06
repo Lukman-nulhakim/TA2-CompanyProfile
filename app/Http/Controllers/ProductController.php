@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -14,7 +15,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('admin.content.product.index');
+        $product = Product::all();
+        return view('admin.content.product.index',compact('product'));
     }
 
     /**
@@ -24,7 +26,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.content.product.create');
     }
 
     /**
@@ -35,7 +37,18 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'nama'        => 'required',
+            'description' => 'required',
+            'image'       => 'required|max:2048'
+        ]);
+
+        $data = $request->all();
+        $data['image'] = $request->file('image')->store('assets/product','public');
+        
+        Product::create($data);
+        return redirect()->route('product.index')->with('pesan',"Data {$validatedData['nama']} berhasil ditambahkan");
+        
     }
 
     /**
@@ -57,7 +70,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view('admin.content.product.edit',compact('product'));
     }
 
     /**
@@ -69,7 +82,14 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $validatedData = $request->validate([
+            'nama'        => 'required',
+            'description' => 'required',
+            'image'       => 'required|max:2024'
+        ]);
+        $product->update($validatedData);
+        $product->save();
+        return redirect()->route('product.index',['product' => $product->id])->with('pesan',"Update data {$validatedData['nama']} Berhasil");
     }
 
     /**
@@ -80,6 +100,7 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        return redirect()->route('product.index')->with('pesan',"Hapus data $product->nama Berhasil ");
     }
 }
