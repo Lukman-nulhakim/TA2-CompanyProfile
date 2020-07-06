@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ClientController extends Controller
 {
@@ -14,7 +15,8 @@ class ClientController extends Controller
      */
     public function index()
     {
-        return view('admin.content.client.index');
+        $clients = Client::all();
+        return view('admin.content.client.index', compact('clients'));
     }
 
     /**
@@ -24,7 +26,7 @@ class ClientController extends Controller
      */
     public function create()
     {
-        //
+        // return view('admin.content.client.create');
     }
 
     /**
@@ -35,7 +37,17 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'nama' => 'required',
+            'alamat' => 'required',
+            'foto' => 'file|image|max:2048'
+        ]);
+
+        $clients = $request->all();
+        $clients['foto'] = $request->file('foto')->store('assets/client', 'public');
+
+        Client::create($clients);
+        return redirect()->route('client.index');
     }
 
     /**
@@ -57,7 +69,7 @@ class ClientController extends Controller
      */
     public function edit(Client $client)
     {
-        //
+        // return view('admin.content.client.edit', compact('client'));
     }
 
     /**
@@ -69,7 +81,15 @@ class ClientController extends Controller
      */
     public function update(Request $request, Client $client)
     {
-        //
+        // kondisi untuk mengedit beberapa antara nama/gambar
+        $dataId = $client->find($client->id);
+        $data = $request->all();
+        if ($request->foto) {
+            Storage::delete('public/'.$dataId->foto);
+            $data['foto'] = $request->file('foto')->store('assets/client', 'public');
+        }
+        $dataId->update($data);
+        return redirect()->route('client.index');
     }
 
     /**
@@ -80,6 +100,8 @@ class ClientController extends Controller
      */
     public function destroy(Client $client)
     {
-        //
+        $client->delete();
+        Storage::delete('public/'.$client->foto);
+        return redirect()->route('client.index')->with('pesan', "Hapus data $client->nama Berhasil");
     }
 }

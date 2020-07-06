@@ -15,8 +15,15 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
+            $table->string('nama');
+            $table->text('description');
+            $table->text('image');
+            $table->bigInteger('detail_id')->unsigned();
             $table->timestamps();
-        });
+
+            $table->foreign('detail_id')->references('id')->on('detail_products')->onDelete('cascade')->onUpdate('cascade');
+
+        }); 
     }
 
     /**
