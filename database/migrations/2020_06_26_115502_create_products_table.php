@@ -23,7 +23,6 @@ class CreateProductsTable extends Migration
 
             $table->foreign('detail_id')->references('id')->on('detail_products')->onDelete('cascade')->onUpdate('cascade');
 
-            
         }); 
     }
 
